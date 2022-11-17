@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=BIZ+UDPMincho&family=Lobster&display=swap');
+body{
+    background:url(../images/HOMEV.jpg);   
+    background-size: cover;
+    font-family: 'Abril Fatface', cursive;
+}
+header{
+    background: rgba(11, 139, 188,0.8);
+}
+.btnColor{
+    background: linear-gradient(to right,#0D84B1 ,#03B5FA);
+}
+
+/*=======================================FORM=====================================*/
+/* .content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    
+}
+.content .left{
+    background-color: #fff;
+    width: 450px;
+} */
+
+form label{
+    font-size: medium;
+}
+
+
+
+
+
+
+
