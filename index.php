@@ -17,7 +17,7 @@ include ("assets/php/database.php");
             <h4 class="text-white ps-5 col-4"><span class="text-dark">You</span>-Book</h4>
             <ul class="text-white d-flex justify-content-evenly list-unstyled col-8">
                 <li class="text-dark">Home</li>
-                <li class=""><a class="text-decoration-none text-white">Books</a></li>
+                <li class=""><a class="text-decoration-none text-white" href="assets/php/books.php">Books</a></li>
                 <li class="">About us</li>
                 <li class="">Contact</li>
             </ul>

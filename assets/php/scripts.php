@@ -26,7 +26,7 @@ function signup(){
 
 function login(){
     global $conn;
-    $_SESSION["name"]=$_POST['name'];
+    
     $Email = $_POST['email'];
     $Password = $_POST['password'];
     $request="SELECT * FROM admins WHERE email='".$Email."' AND password='".$Password."' " ;
@@ -57,11 +57,15 @@ function showBooks(){
     while($row=mysqli_fetch_assoc($result)){
         $id=$row['id'];
         echo'
-        <tr>
-        <td>'.$row['title'].'</td>
-        <td>'.$row['author'].'</td>
-        <td>'.$row['price'].'$</td>
-        <td class="text-center"><a class="text-decoration-none bg-danger border-0 rounded px-2 py-1" href="dashboard.php?id='.$id.'">DELETE</a><button class="bg-success border-0 rounded px-2 py-1 ms-2">UPDATE</button></td>
+        <tr id="'.$id.'">
+            <td>'.$row['id'].'</td>
+            <td class="book-title">'.$row['title'].'</td>
+            <td class="book-author">'.$row['author'].'</td>
+            <td class="book-price">'.$row['price'].'$</td>
+            <td class="text-center">
+            <a class="text-decoration-none bg-danger border-0 rounded px-2 py-1 text-dark" href="dashboard.php?id='.$id.'">DELETE</a>
+            <button class="bg-success border-0 rounded px-2 py-1 ms-2"  onclick="popUp('.$id.')">UPDATE</button>
+            </td>
         </tr>
         ';
     }
@@ -74,3 +78,13 @@ function delete(){
     $Delete="DELETE FROM books WHERE id=$id";
     mysqli_query($conn,$Delete);
 }
+
+function bookCounter(){
+    global $conn;
+    $request="SELECT * FROM books";
+    if ($result=mysqli_query($conn,$request)){
+    $rowcount=mysqli_num_rows($result);
+    echo $rowcount;
+    }
+}
+
