@@ -1,6 +1,9 @@
 <?php
 include('scripts.php');
 include('database.php');
+if(!isset($_SESSION['name'])){
+    header("location:login.php");
+}
 ?>
 </html><!DOCTYPE html>
 <html lang="en">
@@ -15,7 +18,6 @@ include('database.php');
 </head>
 <body>
         <header class="navbar py-2">
-            <!-- <img class="col-4 w-2" src="COFFE-TIME.png" alt="not found" > -->
             <h4 class="ps-5 col-4"><span class="text-info">You</span>-Book</h4>
             <ul class="d-flex justify-content-evenly list-unstyled col-8">
                 <li class="text-dark"><a class="text-decoration-none text-dark fw-bold" href="../../index.php">Home</a></li>
@@ -30,16 +32,13 @@ include('database.php');
                 <ul class="list-unstyled ms-4">
                     <li class="mb-4"><a class="text-decoration-none text-info" data-bs-toggle="offcanvas" href="#sidebarId" role="button" aria-controls="offcanvasExample"><i class="fa fa-pencil me-2"></i>Profile</a></li>
                     <li class="mb-4"><a herf="#" class="text-decoration-none text-info"><i class="fa fa-cog me-2"></i>setting</a></li>
-                    <li><button name="logout" class="border-0 bg-dark text-info"><i class="fa fa-sign-out me-2"></i>log out</button></li>
+                    <li><a name="logout" href="logout.php" class=" text-decoration-none text-info"><i class="fa fa-sign-out me-2"></i>log out</a></li>
                 </ul>
             </aside>
             <main class="col-10">
                 <div class="d-flex justify-content-between">
                     <h1 class="mt-2">Welcome <span class="text-info">
                     <?php 
-                      $_SESSION["name"]=$_POST['name'];
-
-                   if(isset($_SESSION["name"]))
                    echo $_SESSION["name"] ;
                    ?>!</span></h1>
                     <div class="mt-3">
@@ -84,7 +83,7 @@ include('database.php');
                         </thead>
                         <tbody>
                             <?php
-                            showBooks();
+                            displayBooks();
                             ?>
                         </tbody>
                     </table>
@@ -92,8 +91,9 @@ include('database.php');
             </main>
         </div>
 
-        <!-- sidebar -->
-    <div class="offcanvas offcanvas-start bg-dark" tabindex="-1" id="sidebarId" aria-labelledby="offcanvasExampleLabel">
+<!-----------------------------------------------sidebar---------------------------------->
+
+<div class="offcanvas offcanvas-start bg-dark" tabindex="-1" id="sidebarId" aria-labelledby="offcanvasExampleLabel">
         <div class="offcanvas-header">
             <h5 class="offcanvas-title" id="offcanvasExampleLabel">Profile</h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -126,7 +126,8 @@ include('database.php');
         </div>
     </div>
 
-    <!-- Modal -->
+    <!---------------------------------Add books Modal------------------------->
+
 <div class="modal fade" id="addModal">
   <div class="modal-dialog">
     <div class="modal-content">

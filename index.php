@@ -13,7 +13,6 @@ include ("assets/php/database.php");
 </head>
 <body>
         <header class="navbar py-2">
-            <!-- <img class="col-4 w-2" src="COFFE-TIME.png" alt="not found" > -->
             <h4 class="text-white ps-5 col-4"><span class="text-dark">You</span>-Book</h4>
             <ul class="text-white d-flex justify-content-evenly list-unstyled col-8">
                 <li class="text-dark">Home</li>

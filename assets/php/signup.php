@@ -41,7 +41,7 @@
                     <i class="fa fa-google text-info border border-info p-2"></i>
                     <i class="fa fa-twitter text-info border border-info p-2"></i>
                 </div><br>
-                <p>I already have a account?<a href="login.php"> Login</a></p><br>
+                <p>I have a account?<a href="login.php"> Login</a></p><br>
              </form>
         </div>
        </div>

@@ -30,9 +30,9 @@
             <h3 class="text-center mt-3">Log<span class="text-info">in</span></h3>
             <form  id="login" action="scripts.php" method="POST">
                 <label >Email</label><br> 
-                <input id="titleId" class="form-control mt-1" type="text" name="email" size="30"><br>		<!--form-control : let the input bar take 100 of the width-->
+                <input id="titleId" class="form-control mt-1" type="text" name="email" size="30" required><br>		<!--form-control : let the input bar take 100 of the width-->
                 <label >Password</label><br> 
-                <input id="titleId" class="form-control mt-1" type="password" name="password"><br>		<!--form-control : let the input bar take 100 of the width-->
+                <input id="titleId" class="form-control mt-1" type="password" name="password" required><br>		<!--form-control : let the input bar take 100 of the width-->
                 <input type="checkbox" class="check-box" ><span class="ms-2">Remember Password</span><br>
                 <input type="submit" name="login" class="form-control text-white mt-4 btnColor" value="Login">
                 <hr>
