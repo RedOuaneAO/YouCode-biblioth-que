@@ -94,10 +94,10 @@ function displayBooks(){
             <td>'.$row['id'].'</td>
             <td class="book-title">'.$row['title'].'</td>
             <td class="book-author">'.$row['author'].'</td>
-            <td class="book-price">'.$row['price'].'$</td>
+            <td class="book-price">'.$row['price'].'</td>
             <td class="text-center">
             <a class="text-decoration-none bg-danger border-0 rounded px-2 py-1 text-dark" href="dashboard.php?id='.$id.'">DELETE</a>
-            <button class="bg-success border-0 rounded px-2 py-1 ms-2"  onclick="popUp('.$id.')">UPDATE</button>
+            <button class="bg-success border-0 rounded px-2 py-1 ms-2" data-bs-toggle="modal" data-bs-target="#addModal"  onclick="popUp('.$id.')">UPDATE</button>
             </td>
         </tr>
         ';
@@ -128,3 +128,16 @@ function bookCounter(){
     }
 }
 
+if(isset($_POST['update'])){
+    update();
+}
+function update(){
+    global $conn;
+    $id=$_POST['id'];
+    $Title=$_POST['title'];
+    $Author=$_POST['author'];
+    $Price=$_POST['price'];
+    $request="UPDATE `books` SET `title`='$Title',`author`='$Author',`price`=$Price WHERE  id = $id";
+    mysqli_query($conn,$request);
+    header('location:dashboard.php');
+}

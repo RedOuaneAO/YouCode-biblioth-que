@@ -1,8 +1,8 @@
 function popUp(id){
     
     // $('#addModal').modal('show');
-    // var id_input = document.getElementById("bookId");
-    // id_input.value = id;
+    var id_input = document.getElementById("bookId");
+    id_input.value = id;
     var titleInput = document.getElementById("titleId");
     var authorInput = document.getElementById("authorId");
     var priceInput = document.getElementById("priceId");

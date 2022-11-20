@@ -137,6 +137,9 @@ if(!isset($_SESSION['name'])){
       </div>
       <div class="modal-body">
         <form action="scripts.php" method="POST">
+            <!-- for update -->
+            <input type="text" name="id" id="bookId" hidden><br>
+            <!-- for update -->
             <label for="">Title</label><br>
             <input type="text" name="title" class="form-control" id="titleId"><br>
             <label for="">Author</label><br>
@@ -148,6 +151,7 @@ if(!isset($_SESSION['name'])){
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
               <button type="submit" name="addBook" class="btn btn-primary">Add</button>
+              <button type="submit" name="update" class="btn btn-primary">Update</button>
             </div>
         </form>
       </div>
