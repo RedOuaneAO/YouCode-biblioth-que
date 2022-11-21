@@ -8,7 +8,9 @@ if(isset($_POST['signUp']))     signup();
 if(isset($_POST['login']))      login();
 if(isset($_POST['addBook']))    addBooks();
 if(isset($_GET['id']))          delete();
-
+if(isset($_POST['update'])){
+    update();
+}
 
 //================================================================================================================================================================================//
 //================================================================================= SING UP FUNCTION =============================================================================//
@@ -58,7 +60,7 @@ function login(){
     $result=mysqli_query($conn,$request);
     if(mysqli_num_rows($result)==1){
         $owner=mysqli_fetch_assoc($result);
-        $_SESSION["name"]=$owner['name'];
+        $_SESSION["id"]=$owner['id'];
         header('location: dashboard.php');
     }else{
         header('location: login.php');
@@ -128,9 +130,7 @@ function bookCounter(){
     }
 }
 
-if(isset($_POST['update'])){
-    update();
-}
+
 function update(){
     global $conn;
     $id=$_POST['id'];
@@ -138,6 +138,20 @@ function update(){
     $Author=$_POST['author'];
     $Price=$_POST['price'];
     $request="UPDATE `books` SET `title`='$Title',`author`='$Author',`price`=$Price WHERE  id = $id";
+    mysqli_query($conn,$request);
+    header('location:dashboard.php');
+}
+if(isset($_POST['editProfi'])){
+    editProfil();
+}
+
+function editProfil(){
+    global $conn;
+    $id=$_POST['idInput'];
+    $name=$_POST['nameInput'];
+    $email=$_POST['emailInput'];
+    $password=$_POST['passwordInput'];
+    $request="UPDATE `admins` SET `name`='$name',`email`='$email',`password`='$password' WHERE id=$id";
     mysqli_query($conn,$request);
     header('location:dashboard.php');
 }

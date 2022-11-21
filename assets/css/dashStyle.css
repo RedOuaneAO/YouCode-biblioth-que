@@ -20,3 +20,13 @@ main .tb{
 .stati{
     width: 15%;
 }
+
+.btnColor{
+    background: linear-gradient(to right , #0D84B1 ,#03B5FA);
+}
+.profilImage{
+    background: url(../images/profimg.jpg);
+    background-size:contain ;
+}
+
+

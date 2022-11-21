@@ -18,7 +18,7 @@
             <!-- <img class="col-4 w-2" src="COFFE-TIME.png" alt="not found" > -->
             <h4 class="text-white ps-5 col-4"><span class="text-dark">You</span>-Book</h4>
             <ul class="text-white d-flex justify-content-evenly list-unstyled col-8">
-                <li class=""><a class="text-decoration-none text-dark" href="index.php">Home</a></li>
+                <li class=""><a class="text-decoration-none text-dark" href="../../index.php">Home</a></li>
                 <li class="">Books</li>
                 <li class="">About us</li>
                 <li class="">Contact</li>

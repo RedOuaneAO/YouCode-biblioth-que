@@ -1,9 +1,13 @@
 <?php
 include('scripts.php');
 include('database.php');
-if(!isset($_SESSION['name'])){
+if(!isset($_SESSION['id'])){
     header("location:login.php");
 }
+$id = $_SESSION['id'];
+$request = "SELECT `name`, `email`, `password` FROM `admins` WHERE id=$id";
+$result=mysqli_query($conn,$request);
+$owner=mysqli_fetch_assoc($result);
 ?>
 </html><!DOCTYPE html>
 <html lang="en">
@@ -36,15 +40,18 @@ if(!isset($_SESSION['name'])){
                 </ul>
             </aside>
             <main class="col-10">
-                <div class="d-flex justify-content-between">
+
+                <div class="d-flex justify-content-between mt-3">
                     <h1 class="mt-2">Welcome <span class="text-info">
                     <?php 
-                   echo $_SESSION["name"] ;
+                   echo $owner['name'] ;
                    ?>!</span></h1>
                     <div class="mt-3">
                         <input type="text"><button class="bg-info border-0 p-2"><i class="fa fa-search"></i></button>
                     </div>
+                    <button class="rounded-2 fw-bold border-0 btnColor text-white px-4 m-3"  data-bs-toggle="modal" data-bs-target="#addModal">ADD BOOK</button>
                 </div><hr>
+
                 <div class="d-flex justify-content-evenly">
                     <div class="d-flex bg-danger rounded stati">
                         <i class="fa fa-users text-info p-4"></i>
@@ -63,11 +70,10 @@ if(!isset($_SESSION['name'])){
                     <div class="d-flex bg-success rounded stati">
                     <i class="fa fa-shopping-cart text-info p-4"></i>
                         <div>
-                            <h6 class="text-white">Sell</h6>
+                            <h6 class="text-white">Sales</h6>
                             <p>176</p>
                         </div>
                     </div>
-                    <button class="bg-info border-0 rounded-pill px-3"  data-bs-toggle="modal" data-bs-target="#addModal">ADD BOOK</button>
                 </div>
                 
                 <div class="d-flex justify-content-center mt-5 tb rounded">
@@ -99,27 +105,33 @@ if(!isset($_SESSION['name'])){
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div>
-        <img src="../images/user_icon.png" width="100px" alt="not found" class="rounded-circle opacity-75 m-5"><br>
-        <form>
+            <div class="profilImage">
+                <img src="../images/user_icon.png" width="100px" alt="not found" class="rounded-circle opacity-75 m-5"><br>
+            </div>
+        <form action="scripts.php" method="POST">
                     <table class="table" class="border-0">
                             <tr class="border-0">
+                                <th><label class="text-info">id</label></th>
+                                <th><input type="number" name="idInput" value="<?php echo $_SESSION['id']?>"></th>
+                            </tr>
+                            <tr class="border-0">
                                 <th>  <label for="" class="text-info">Name</label></th>
-                                <th><input type="text"></th>
+                                <th><input type="text" name="nameInput" value="<?php echo $owner['name']?>"></th>
                             </tr>
                             <tr class="border-0">
                                 <th>  <label for="" class="text-info">Email</label></th>
-                                <th><input type="email"></th>
+                                <th><input type="email" name="emailInput" value="<?php echo $owner['email']?>"></th>
                             </tr>
                             <tr class="border-0">
                                 <th>  <label for="" class="text-info">Password</label></th>
-                                <th><input type="password"></th>
+                                <th><input type="password" name="passwordInput" value="<?php echo $owner['password']?>"></th>
                             </tr>
-                            <tr class="border-0">
+                            <!-- <tr class="border-0">
                                 <th>  <label for="" class="text-info">Phone Number</label></th>
                                 <th><input type="number"></th>
-                            </tr>
+                            </tr> -->
                             <tr class="border-0">
-                                <th class="text-end"><button>Enregistrer</button><th>
+                                <th class="text-end"><button name="editProfi" class="px-4 py-2 mt-4 rounded-2 fw-bold border-0 btnColor text-white">Enregistrer</button><th>
                             </tr>
                     </table>
         </form>
