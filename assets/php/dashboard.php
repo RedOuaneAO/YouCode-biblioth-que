@@ -1,13 +1,13 @@
 <?php
-include('scripts.php');
-include('database.php');
-if(!isset($_SESSION['id'])){
-    header("location:login.php");
-}
-$id = $_SESSION['id'];
-$request = "SELECT `name`, `email`, `password` FROM `admins` WHERE id=$id";
-$result=mysqli_query($conn,$request);
-$owner=mysqli_fetch_assoc($result);
+    include('scripts.php');
+    include('database.php');
+    if(!isset($_SESSION['id'])){
+        header("location:login.php");
+    }
+    $id = $_SESSION['id'];
+    $request = "SELECT `name`, `email`, `password` FROM `admins` WHERE id=$id";
+    $result=mysqli_query($conn,$request);
+    $owner=mysqli_fetch_assoc($result);
 ?>
 </html><!DOCTYPE html>
 <html lang="en">
@@ -18,14 +18,14 @@ $owner=mysqli_fetch_assoc($result);
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/dashStyle.css">
-    <title>Document</title>
+    <title>You-Book</title>
 </head>
 <body>
-        <header class="navbar py-2">
-            <h4 class="ps-5 col-4"><span class="text-info">You</span>-Book</h4>
-            <ul class="d-flex justify-content-evenly list-unstyled col-8">
+        <header class="row py-2">
+            <h4 class="ps-5 col"><span class="text-info">You</span>-Book</h4>
+            <ul class="d-sm-flex justify-content-evenly list-unstyled col">
                 <li class="text-dark"><a class="text-decoration-none text-dark fw-bold" href="../../index.php">Home</a></li>
-                <li class="fw-bold">Books</li>
+                <li class="fw-bold"><a class="text-decoration-none text-dark" href="books.php">Books</a></li>
                 <li class="fw-bold">About us</li>
                 <li class="fw-bold">Contact</li>
             </ul>
@@ -34,7 +34,7 @@ $owner=mysqli_fetch_assoc($result);
             <aside class="bg-dark col-2">
                 <img src="../images/user_icon.png" alt="not found" class="rounded-circle opacity-75 m-5">
                 <ul class="list-unstyled ms-4">
-                    <li class="mb-4"><a class="text-decoration-none text-info" data-bs-toggle="offcanvas" href="#sidebarId" role="button" aria-controls="offcanvasExample"><i class="fa fa-pencil me-2"></i>Profile</a></li>
+                    <li class="mb-4"><a class="text-decoration-none text-info" data-bs-toggle="offcanvas" href="#sidebarId" role="button" aria-controls="offcanvasExample"><i class="fa fa-pencil me-2 "></i>Profile</a></li>
                     <li class="mb-4"><a herf="#" class="text-decoration-none text-info"><i class="fa fa-cog me-2"></i>setting</a></li>
                     <li><a name="logout" href="logout.php" class=" text-decoration-none text-info"><i class="fa fa-sign-out me-2"></i>log out</a></li>
                 </ul>
@@ -101,7 +101,7 @@ $owner=mysqli_fetch_assoc($result);
 
 <div class="offcanvas offcanvas-start bg-dark" tabindex="-1" id="sidebarId" aria-labelledby="offcanvasExampleLabel">
         <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Profile</h5>
+            <h5 class="offcanvas-title text-white" id="offcanvasExampleLabel">Edit<span class="text-info"> Profile</span></h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div>
@@ -109,8 +109,8 @@ $owner=mysqli_fetch_assoc($result);
                 <img src="../images/user_icon.png" width="100px" alt="not found" class="rounded-circle opacity-75 m-5"><br>
             </div>
         <form action="scripts.php" method="POST">
-                    <table class="table" class="border-0">
-                            <tr class="border-0">
+                    <table class="table mt-3" class="border-0">
+                            <tr class="border-0" hidden>
                                 <th><label class="text-info">id</label></th>
                                 <th><input type="number" name="idInput" value="<?php echo $_SESSION['id']?>"></th>
                             </tr>
