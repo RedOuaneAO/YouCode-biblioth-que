@@ -17,35 +17,21 @@ if(isset($_POST['editProfi']))  editProfil();
 //================================================================================================================================================================================//
 
 function signup(){
-
-
-
-//     global $conn;
-//     $Name = $_POST['name'];
-//     $Email = $_POST['email'];
-//     $Password = $_POST['password'];
-
-//     $sql="SELECT * FROM admins";
-//     $sen=mysqli_query($conn,$sql);
-//     $result=mysqli_fetch_assoc($sen);
-//    if($Email=$result['email']){
-//     header("location:signup.php");
-//    }else{
-//        $request="INSERT INTO admins VALUES(null,'$Name','$Email','$Password');";
-//        mysqli_query($conn,$request);
-    
-//     //    header('location: login.php');
-//    }
-
-
     global $conn;
-
     $Name = $_POST['name'];
     $Email = $_POST['email'];
     $Password = $_POST['password'];
-    $request="INSERT INTO admins VALUES(null,'$Name','$Email','$Password');";
-    mysqli_query($conn,$request);
-    header('location: login.php');
+    $sql="SELECT count(*) FROM admins where email= '$Email'";
+    $result=mysqli_query($conn,$sql);
+    $row = mysqli_fetch_assoc($result);
+   if($row['count(*)'] == 1){
+    header('location: signup.php');
+    $_SESSION['already']="email already exist!";
+   }else{
+       $request="INSERT INTO admins VALUES(null,'$Name','$Email','$Password');";
+       mysqli_query($conn,$request);
+       header('location: login.php');
+   }
 }
 //================================================================================================================================================================================//
 //================================================================================= LOGIN FUNCTION ===============================================================================//
@@ -64,6 +50,7 @@ function login(){
         header('location: dashboard.php');
     }else{
         header('location: login.php');
+        $_SESSION['message']="enter a valid data";
     }
 }
 
@@ -97,7 +84,7 @@ function displayBooks(){
             <td class="book-title">'.$row['title'].'</td>
             <td class="book-author">'.$row['author'].'</td>
             <td class="book-price">'.$row['price'].'</td>
-            <td class="text-center">
+            <td class="text-center d-flex">
             <a class="text-decoration-none bg-danger border-0 rounded px-2 py-1 text-dark" href="dashboard.php?id='.$id.'">DELETE</a>
             <button class="bg-success border-0 rounded px-2 py-1 ms-2" data-bs-toggle="modal" data-bs-target="#addModal"  onclick="popUp('.$id.')">UPDATE</button>
             </td>
@@ -130,6 +117,19 @@ function bookCounter(){
     }
 }
 
+//================================================================================================================================================================================//
+//=================================================================================TOTAL PRICE FUNCTION =============================================================================//
+//================================================================================================================================================================================//
+
+function totalPrice(){
+    global $conn;
+    $request="SELECT sum(price) FROM `books`";
+    $result=mysqli_query($conn,$request);
+    if($result){
+        $totalprice=mysqli_fetch_assoc($result);
+        echo $totalprice['sum(price)'];
+    }
+}
 //================================================================================================================================================================================//
 //=================================================================================UPDATE FUNCTION =============================================================================//
 //================================================================================================================================================================================//

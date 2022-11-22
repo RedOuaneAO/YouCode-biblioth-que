@@ -4,6 +4,7 @@
 body{
     background: url(../images/HOMEV.jpg);   
     background-size: cover;
+    background-attachment: fixed;
     font-family: 'Abril Fatface', cursive;
 
 }
@@ -14,7 +15,7 @@ header{
 }
 
 section h1{
-    font-size: 120px;
+    font-size: 620%;
 }
 section p{
     font-size: 20px;

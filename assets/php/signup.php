@@ -18,26 +18,43 @@
     <title>You-Book</title>
 </head>
 <body>
-        <header class="navbar py-2">
-            <h4 class="text-white ps-5 col-4"><span class="text-dark">You</span>-Book</h4>
-            <ul class="text-white d-flex justify-content-evenly list-unstyled col-8">
-                <li class=""><a href="index.php" class="text-decoration-none text-dark">Home</a></li>
-                <li class="">Books</li>
-                <li class="">About us</li>
-                <li class="">Contact</li>
-            </ul>
+        <header class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <h4 class="navbar-brand fw-bold mx-4 text-white"><span class="text-dark">You</span>-Book</h4>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#linksId"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse justify-content-end" id="linksId">
+                    <div class="navbar-nav">
+                        <a href="../../index.php" class="nav-link mx-5 text-dark fw-bold">Home</a>
+                        <a href="#" class="nav-link mx-5 text-white fw-bold">Books</a>
+                        <a href="#" class="nav-link mx-5 text-white fw-bold">About</a>
+                        <a href="#" class="nav-link mx-5 text-white fw-bold">Contact</a>
+                    </div>
+                </div>
+            </div>
         </header>
-        <!-- form -->
+
+        <!------------------------------------------ form -------------------------------------->
+
        <div class="content d-flex justify-content-center mt-3">
         <div class="left bg-white px-5 rounded">
             <h3 class="text-center mt-3 text-black">Sign<span class="text-info"> Up</span></h3>
             <form  id="singup" action="scripts.php" method="POST" class="mt-5" data-parsley-validate>
+            <?php if (isset($_SESSION['already'])): ?> 						<!--the message of wrong data -->
+						<div class="alert alert-danger alert-dismissible fade show">
+						<strong>Ooups!</strong>
+						<?php 
+						echo $_SESSION['already']; 
+						unset($_SESSION['already']);
+					?>
+					<button type="button" class="btn-close" data-bs-dismiss="alert"></span>
+					</div>
+			<?php endif ?>
                 <label class="">Name</label><br> 
-                <input id="" class="form-control mt-1" size="30" type="text" name="name"><br>		<!--form-control : let the input bar take 100 of the width-->
+                <input id="" class="form-control mt-1" size="40" type="text" name="name"><br>		<!--form-control : let the input bar take 100 of the width-->
                 <label>Email</label><br> 
                 <input id="" class="form-control mt-1" type="email" name="email" data-parsley-type="email" required><br>		<!--form-control : let the input bar take 100 of the width-->
                 <label>Password</label><br> 
-                <input id="" class="form-control mt-1" type="password" name="password" data-parsley-length="[6, 10]" required><br>		<!--form-control : let the input bar take 100 of the width-->
+                <input id="" class="form-control mt-1" type="password" name="password" data-parsley-minlength="6" required><br>		<!--form-control : let the input bar take 100 of the width-->
                 <input type="submit" name="signUp" class="form-control text-white mt-4 btnColor" value="Sign up">
                 <hr>
                 <div class="d-flex justify-content-evenly mt-3">

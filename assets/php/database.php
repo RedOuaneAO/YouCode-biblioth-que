@@ -4,7 +4,7 @@ global $conn;
 $dbServername = "localhost";
 $dbUsername = "root";
 $dbPassword ="";
-$dbName = "library";
+$dbName = "youcode-library";
 
 $conn = mysqli_connect($dbServername,$dbUsername,$dbPassword,$dbName);
 

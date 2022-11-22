@@ -16,17 +16,23 @@
     <title>Document</title>
 </head>
 <body>
-        <header class="navbar py-2">
-            <h4 class="text-white ps-5 col-4"><span class="text-dark">You</span>-Book</h4>
-            <ul class="text-white d-flex justify-content-evenly list-unstyled col-8">
-                <li class="text-dark">Home</li>
-                <li class=""><a class="text-decoration-none text-white" href="assets/php/books.php">Books</a></li>
-                <li class="">About us</li>
-                <li class="">Contact</li>
-            </ul>
+        <header class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <h4 class="navbar-brand fw-bold mx-4 text-white"><span class="text-dark">You</span>-Book</h4>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#linksId"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse justify-content-end" id="linksId">
+                    <div class="navbar-nav">
+                        <a href="index.php" class="nav-link mx-5 text-dark fw-bold">Home</a>
+                        <a href="#" class="nav-link mx-5 text-white fw-bold">Books</a>
+                        <a href="#" class="nav-link mx-5 text-white fw-bold">About</a>
+                        <a href="#" class="nav-link mx-5 text-white fw-bold">Contact</a>
+                    </div>
+                </div>
+            </div>
         </header>
+
         <section class="mt-5">
-            <div class="">
+            <div class="container-fluid">
                 <h1 class="text-center text-info">Welcome</h1>
                 <p class="text-center text-info mt-3">dolor sit amet consectetur adipisicing elit.</p>
                 <div class="text-center mt-5">

@@ -2,6 +2,7 @@
 body{
     background:url(../images/HOMEV.jpg);   
     background-size: cover;
+    background-attachment: fixed;
     font-family: 'Abril Fatface', cursive;
 }
 header{
