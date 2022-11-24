@@ -61,7 +61,7 @@
                 <!-- <div class="mt-4">
                     <input type="text" placeholder="Search">
                 </div> -->
-                <button class="rounded-2 fw-bold border-0 btnColor text-white px-4 my-4"  data-bs-toggle="modal" data-bs-target="#addModal">ADD BOOK</button>
+                <button class="rounded-2 fw-bold border-0 btnColor text-white px-4 my-4"  data-bs-toggle="modal" data-bs-target="#addModal" id="addBookBtn" onclick="addd()">ADD BOOK</button>
             </div><hr>
 
             <div class="row gap-1 justify-content-evenly">
@@ -161,7 +161,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form action="scripts.php" method="POST">
+        <form id="formId" action="scripts.php" method="POST">
             <!-- for update -->
             <input type="text" name="id" id="bookId" hidden><br>
             <!-- for update -->
@@ -173,8 +173,8 @@
             <input type="number" name="price" class="form-control" id="priceId" required><br>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="submit" name="addBook" class="btn btn-primary">Add</button>
-              <button type="submit" name="update" class="btn btn-primary">Update</button>
+              <button type="submit" name="addBook" class="btn btn-primary" id="addBtn">Add</button>
+              <button type="submit" name="update" class="btn btn-primary" id="updateId" >Update</button>
             </div>
         </form>
       </div>

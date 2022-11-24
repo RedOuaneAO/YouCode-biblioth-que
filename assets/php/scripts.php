@@ -86,7 +86,7 @@ function displayBooks(){
             <td class="book-price">'.$row['price'].'</td>
             <td class="text-center d-flex">
             <a class="text-decoration-none bg-danger border-0 rounded px-2 py-1 text-dark" href="dashboard.php?id='.$id.'">DELETE</a>
-            <button class="bg-success border-0 rounded px-2 py-1 ms-2" data-bs-toggle="modal" data-bs-target="#addModal"  onclick="popUp('.$id.')">UPDATE</button>
+            <button  class="testeddd bg-success border-0 rounded px-2 py-1 ms-2" data-bs-toggle="modal" data-bs-target="#addModal"  onclick="popUp('.$id.')">UPDATE</button>
             </td>
         </tr>
         ';

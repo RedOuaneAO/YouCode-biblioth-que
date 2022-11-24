@@ -1,6 +1,5 @@
 function popUp(id){
     
-    // $('#addModal').modal('show');
     var id_input = document.getElementById("bookId");
     id_input.value = id;
     var titleInput = document.getElementById("titleId");
@@ -16,7 +15,20 @@ function popUp(id){
     var price = document.getElementById(id).querySelector('.book-price').innerHTML;
     priceInput.value=price;    
     
+    document.getElementById('addBtn').style.display = "none";
+    document.getElementById('updateId').style.display = "inline";
 }
 
+
+
+function addd(){
+    document.getElementById('addBtn').style.display = "inline";
+    document.getElementById('updateId').style.display = "none";
+}
+
+
+function resetForm(){
+        document.getElementById('formId').reset();
+}
 
 
